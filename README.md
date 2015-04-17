@@ -13,6 +13,7 @@ Run using terminal preferably on vm software, available on any machine.
 
 Group Members:
 Anh-khoa Than
+Yash Parekh
 
 Contributors:
 
