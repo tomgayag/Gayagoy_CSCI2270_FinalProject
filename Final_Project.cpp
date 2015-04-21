@@ -33,17 +33,17 @@ int main(int argc, char *argv[])
 	while (Quit!=true)
 	{
 	    cout << "======Main Menu=====" << endl;
-		cout << "Chord Creation" << endl;
-		cout << "Find Chord" << endl;
-		cout << "Add Chord" << endl;
-		cout << "Delete Chord" << endl;
-		cout << "Tranpose Chord Up" << endl;
-		cout << "Transpose Chord Down" << endl;
-		cout << "Change Chord" << endl;
-		cout << "Display Chord" << endl;
-		cout << "Write To File" << endl;
-		cout << "Save Changes" << endl;
-		cout << "Quit" << endl;
+		cout << "1.Build Chord" << endl;
+		cout << "2.Find Chord" << endl;
+		cout << "3.Add Chord" << endl;
+		cout << "4.Delete Chord" << endl;
+		cout << "5.Tranpose Chord Up" << endl;
+		cout << "6.Transpose Chord Down" << endl;
+		cout << "7.Change Chord" << endl;
+		cout << "8.Display Chord" << endl;
+		cout << "9.Write To File" << endl;
+		cout << "10.Save Changes" << endl;
+		cout << "11.Quit" << endl;
 		cin >> lets_play_guitar;;
 		cin.clear();
 		cin.ignore(10000, '\n');
@@ -72,46 +72,101 @@ int main(int argc, char *argv[])
         cout << string_guitar4 << endl;
         cout << string_guitar5 << endl;
         cout << string_guitar6 << endl;
-        the_guitar->chord_creation(chord,string_guitar1, string_guitar2,string_guitar3,string_guitar4,string_guitar5, string_guitar6);
+        the_guitar->build_chord(chord,string_guitar1, string_guitar2,string_guitar3,string_guitar4,string_guitar5, string_guitar6);
 		}
 			break;
 		}
         case 2:
         {
-			cout << "Let's find the chord" << endl;
+			string chord_to_find;
+			cout << "Enter chord to find" << endl;
+			getline(cin, chord_to_find);
+			the_guitar->find_chord(chord_to_find);
 			break;
 		}
         case 3:
         {
-			string node_to_add;
-			cout << "Let's add the chord" << endl;
+			string chord_to_add;
 			cout << "Enter chord to add" << endl;
-			getline(cin,node_to_add);
-			the_guitar->add_chord(node_to_add,string_guitar1, string_guitar2,string_guitar3,string_guitar4,string_guitar5, string_guitar6);
+			getline(cin,chord_to_add);
+			string new_string_guitar1;
+			string new_string_guitar2;
+			string new_string_guitar3;
+			string new_string_guitar4;
+			string new_string_guitar5;
+			string new_string_guitar6;
+			cout << "Enter new string guitat1" << endl;
+			getline(cin,new_string_guitar1);
+			cout << "Enter new string guitat2" << endl;	
+			getline(cin,new_string_guitar2);
+			cout << "Enter new string guitat3" << endl;	
+			getline(cin,new_string_guitar3);
+			cout << "Enter new string guitat4" << endl;
+			getline(cin,new_string_guitar4);
+			cout << "Enter new string guitat5" << endl;
+			getline(cin,new_string_guitar5);
+			cout << "Enter new string guitat6" << endl;
+			getline(cin,new_string_guitar6);
+			the_guitar->add_chord(chord_to_add, new_string_guitar1, new_string_guitar2,new_string_guitar3,new_string_guitar4,new_string_guitar5, new_string_guitar6);
 			break;
 		}
         case 4:
         {
-			string node_to_delete;
+			string chord_to_delete;
 			cout << "Enter chord to delete" << endl;
-			getline(cin, node_to_delete);
-            cout << "Let's delete the chord" << endl;
-            the_guitar->delete_chord(node_to_delete);
+			getline(cin, chord_to_delete);
+            the_guitar->delete_chord(chord_to_delete);
             break;
 		}
         case 5:
         {
-			cout << "Let's tranpose the chord up" << endl;
+			string number_move_up;
+			string chord;
+			cout << "Enter chord to move up" << endl;
+			getline(cin, chord);
+			cout << "Enter how many steps up" << endl;
+			getline(cin, number_move_up);
+			the_guitar->transpose_chord_up(chord, stoi(number_move_up));
 			break;
 		}
 		case 6:
 		{
-			cout << "Let's tranpose the chord down" << endl;
+			string number_move_down;
+			string chord;
+			cout << "Enter chord to move down" << endl;
+			getline(cin, chord);
+			cout << "Enter how many steps down" << endl;
+			getline(cin, number_move_down);
+			the_guitar->transpose_chord_down(chord, stoi(number_move_down));
 			break;
 		}
 		case 7:
 		{
-			cout << "Let's change the chord" << endl;
+			string current_chord;
+			string new_chord_name;
+			string new_string_guitar1;
+			string new_string_guitar2;
+			string new_string_guitar3;
+			string new_string_guitar4;
+			string new_string_guitar5;
+			string new_string_guitar6;
+			cout << "Enter current chord" << endl;	
+			getline(cin,current_chord);
+			cout << "Enter new chord name" << endl;
+			getline(cin, new_chord_name);
+			cout << "Enter new string guitat1" << endl;
+			getline(cin,new_string_guitar1);
+			cout << "Enter new string guitat2" << endl;	
+			getline(cin,new_string_guitar2);
+			cout << "Enter new string guitat3" << endl;	
+			getline(cin,new_string_guitar3);
+			cout << "Enter new string guitat4" << endl;
+			getline(cin,new_string_guitar4);
+			cout << "Enter new string guitat5" << endl;
+			getline(cin,new_string_guitar5);
+			cout << "Enter new string guitat6" << endl;
+			getline(cin,new_string_guitar6);
+			the_guitar -> change_chord(current_chord, new_chord_name, new_string_guitar1, new_string_guitar2, new_string_guitar3, new_string_guitar4, new_string_guitar5, new_string_guitar6);
 			break;
 		}
 		case 8:
@@ -122,18 +177,20 @@ int main(int argc, char *argv[])
 		}
 		case 9:
 		{
-			cout << "Write to file" << endl;
+			cout << "Clear all chords" << endl;
+			the_guitar->clear_all_chords();
 			break;
 		}
 		case 10:
 		{
-			cout << "Save changes" << endl;
+			cout << "Write to file" << endl;
+			the_guitar->write_to_file();
 			break;
 		}
 		case 11:
 		{
 			Quit = true;
-			cout << "This is the end of the guitar lesson" << endl;
+			cout << "This is the end of the guitar lesson! Goodbye!" << endl;
 			break;
 		}
 		}
