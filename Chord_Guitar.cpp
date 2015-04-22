@@ -19,40 +19,41 @@ Guitar::Guitar()
  start_creation = false;
 }
 
+//This is the build chord function, which takes in the name of the chord, and each of the strings, as strings
 void Guitar::build_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
-if(start_creation == false)
+if(start_creation == false) //The boolean start_creation is initialized as false, so this statement will be true the first time that a chord is built
 {
-node *n = new node;
+node *n = new node;		//We create a new node for the first chord, and since it is the first chord, it is set to be the head and the tail
 head = n;
 tail = n;
-n->chord = chord;
-n->string_guitar1 = string_guitar1;
+n->chord = chord;	//This string is the name of the node, (the chord name)
+n->string_guitar1 = string_guitar1;		//string_guitar1 - string_guitar6 are the individual strings on the guitar for the first chord n are the placements for each string for the new chord
 n->string_guitar2 = string_guitar2;
 n->string_guitar3 = string_guitar3;
 n->string_guitar4 = string_guitar4;
 n->string_guitar5 = string_guitar5;
 n->string_guitar6 = string_guitar6;
 
-n->next = NULL;
+n->next = NULL;		//Since this is making the first chord, its next and previous pointers are set to be NULL
 n->previous = NULL;
-start_creation = true;
+start_creation = true;	//The boolean start_creation is set to true since if there are already a chord (or chords) in the linked list then there will be different conditions
 }
 else if (start_creation == true)
 {
 node *n1 = new node;
-n1->chord = chord;
-n1->string_guitar1 = string_guitar1;
+n1->chord = chord;	//Again, this string is the name of the new chord
+n1->string_guitar1 = string_guitar1;	//string_guitar1-string_guitar6 for the new chord n1
 n1->string_guitar2 = string_guitar2;
 n1->string_guitar3 = string_guitar3;
 n1->string_guitar4 = string_guitar4;
 n1->string_guitar5 = string_guitar5;
 n1->string_guitar6 = string_guitar6;
 
-n1->next = NULL;
-n1->previous = tail;
-tail->next = n1;
-tail = tail->next;
+n1->next = NULL;	//Since we are adding this chord to the end of the linked list, its next pointer is set to NULL
+n1->previous = tail;	//Setting its previous pointer to tail sets it at the end
+tail->next = n1;	//The old tail's next pointer is set to be the new chord
+tail = tail->next;	//The tail is moved to the last node
 if(tail->chord == "Gsharp")
 {
 	tail->loop = head;
@@ -64,13 +65,14 @@ if(tail->chord == "Gsharp")
 }
 }
 
+//This is the find chord function, which takes in a string of the chord to be found
 void Guitar::find_chord(std::string chord)
 {
-bool found = false;
+bool found = false;		//Initially, the boolean found is set to false
 tail = head;
 while(tail!=NULL)
 {
-	if(chord == tail->chord)
+	if(chord == tail->chord)	//tail is set to head, and tail goes through the linked list until the chord is found and when found, the user is notified and given the name of the chord and the positions for each string
 	{
 		found = true;
 		cout << chord << " chord has been found! Congratulations! You won!!" << endl;
@@ -84,7 +86,7 @@ while(tail!=NULL)
 	}
 	tail = tail->next;
 }
-	if(found == false)
+	if(found == false)			//or, if the chord is not found, the user is notified of that as well
 	{
 		cout << chord << " does not exist! Please enter another chord to find!" << endl;
 	}
@@ -92,76 +94,76 @@ while(tail!=NULL)
 	
 }
 
+//This is the add chord function, which takes in the name of the chord, and each of the strings, as strings
 void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 node *n = new node;
-while(tail->next!=NULL)
+while(tail->next!=NULL)	//We loop through the linked list to find the tail, and set a new pointer, tail->next
 {
 	tail = tail->next;
 }
-node *n1 = new node;
-n1->chord = chord;
-n1->string_guitar1 = string_guitar1;
+node *n1 = new node;	//n1 is the new chord to be created
+n1->chord = chord;		//n1->chord is a string which is the name of the chord
+n1->string_guitar1 = string_guitar1;	//string_guitar1-string_guitar6 for the new chord
 n1->string_guitar2 = string_guitar2;
 n1->string_guitar3 = string_guitar3;
 n1->string_guitar4 = string_guitar4;
 n1->string_guitar5 = string_guitar5;
 n1->string_guitar6 = string_guitar6;
-n1->next = NULL;
+n1->next = NULL;		//Add to the end of the linked list
 n1->previous = tail;
 tail->next = n1;
 tail = tail->next;
-cout << chord << " has been succesfull added! Press 8 to display it!" << endl;
+cout << chord << " has been succesfull added! Press 8 to display it!" << endl; //Notify the user that the chord has been added
 }
 
+//This is the delete chord function, which takes in a string of the chord to be deleted
 void Guitar::delete_chord(string chord)
 {
 	bool found = false;
 tail = head;
-while(tail!=NULL)
+while(tail!=NULL)	//First we find the chord to be deleted
 {
-	if(chord == tail->chord)
+	if(chord == tail->chord)	//If the chord is found, we change the bool found to be true
 	{
 		found = true;
 		break;
 	}
 	tail = tail->next;
 }
-	if(found == false)
+	if(found == false)	//If the chord isn't found, the user is notified
 	{
 		cout << chord << " does not exist! Please enter another chord!" << endl;
 	}
 	else
 	{
-		if(tail->previous == NULL)
+		if(tail->previous == NULL)	//If the node to be deleted is the head (at the beginning)
 		{
-			tail = tail->next;
+			tail = tail->next;	//the tail pointer is moved, head is deleted, and the new head is set and its previous pointer is set to NULL
 			delete head;
 			head = tail;
 			head->previous = NULL;
 			cout << chord << " has been removed! Press 8 to display new list of chords!" << endl;
 		}
-		if(tail->next == NULL)
+		if(tail->next == NULL)	//If the node to be deleted is the tail (at the end)
 		{
 			cout <<"the test" << endl;
-			node *yash = tail->previous;
+			node *yash = tail->previous;	//A new pointer is set to the previous of that node, the tail is deleted, and the previous node's next pointer is set to NULL
 			delete tail;
 			yash->next = NULL;
 			cout << chord << " has been removed! Press 8 to display new list of chords!" << endl;
 		}
-		if(tail->next !=NULL && tail->previous!=NULL)
+		if(tail->next !=NULL && tail->previous!=NULL)	//If the node to be deleted is somewhere in the middle
 		{
-			tail->previous->next = tail->next;
-			tail->next->previous = tail->previous;
-			delete tail;
+			tail->previous->next = tail->next;		//The next pointer of the node previous to the tail is set to be the next value of the original tail
+			tail->next->previous = tail->previous;	//The previous pointer of the node next to the tail is set to be the previous value of the original tail
+			delete tail;							//The tail is deleted
 			cout << chord << " has been removed! Press 8 to display new list of chords!" << endl;
 		}
 	}
-	
-		
-			
 }
 
+//This is the transpose up function, which takes in the chord as a string and the number to traspose up as an int
 void Guitar::transpose_chord_up(string chord, int number_move_up)
 {
 	bool found = false;
