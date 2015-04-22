@@ -168,9 +168,9 @@ void Guitar::transpose_chord_up(string chord, int number_move_up)
 {
 	bool found = false;
 tail = head;
-while(tail!=NULL)
+while(tail!=NULL)	//loop through the chord
 {
-	if(chord == tail->chord)
+	if(chord == tail->chord)	//If the chord is found
 	{
 		while(number_move_up != 0)
 		{
@@ -187,7 +187,7 @@ while(tail!=NULL)
 			cout << tail->chord << endl;
 		}
 	
-	
+		//Once chord has been transposed, it is diplayed to the user
 		found = true;
 		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
 		cout << tail->string_guitar1 << endl;
@@ -207,6 +207,7 @@ while(tail!=NULL)
 
 }
 
+//This is the transpose down function, which takes in the chord as a string and the number to traspose up down an int
 void Guitar:: transpose_chord_down(string chord, int number_move_down)
 {
 bool found = false;
@@ -229,8 +230,8 @@ while(tail!=NULL)
 			number_move_down--;
 			cout << tail->chord << endl;
 		}
-	
-	
+		
+		//Once the chord has been transposed down, it is displayed to the user
 		found = true;
 		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
 		cout << tail->string_guitar1 << endl;
@@ -250,16 +251,17 @@ while(tail!=NULL)
 
 }
 
+//The change chord function allows the user to edit an already created chord
 void Guitar::change_chord(string chord, string new_chord_name, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 	bool found = false;
 tail = head;
-while(tail!=NULL)
+while(tail!=NULL)	//loops through chord
 {
-	if(chord == tail->chord)
+	if(chord == tail->chord)	//once found, the chord's name is changed
 	{
 		found = true;
-		tail->chord = new_chord_name;
+		tail->chord = new_chord_name;			//The only property changed is the chord name, while the strings themselves remain the same
 		tail->string_guitar1 = string_guitar1;
 		tail->string_guitar2 = string_guitar2;
 		tail->string_guitar3 = string_guitar3;
@@ -271,49 +273,52 @@ while(tail!=NULL)
 	}
 	tail = tail->next;
 }
-	if(found == false)
+	if(found == false)	//Or, complains to the user if the chord is not found
 	{
 		cout << chord << " does not exist! Please enter another chord to find!" << endl;
 	}
 
 }
 
+//The display chord function outputs the chord
 void Guitar::display_chord()
 {
 	if(head == NULL)
 	{
-		cout << "Build list first" << endl;
+		cout << "Build list first" << endl; // If the chord is empty, the user is notified to build first
 	}
 	else
 	{
 	tail = head;
-	while(tail->next!=NULL)
+	while(tail->next!=NULL)			//Or if it is not empty, loop through the chord
 	{
 		cout << tail->chord << endl;
 		tail = tail->next;
 	}
-	cout << tail->chord << endl;
+	cout << tail->chord << endl; //And prints it out
 }
 }
 
+//The clear all chords function removes all chords
 void Guitar::clear_all_chords()
 {	
 node*temp = head;
-node*all_cleared = head;
-while(all_cleared!=NULL)
+node*all_cleared = head;	//2 new nodes are created, temp and all_cleared, which are initialized to the head
+while(all_cleared!=NULL)	//While all_cleared does not reach the end
 {
-	cout << all_cleared->chord << endl;
-	all_cleared = all_cleared->next;
-	delete temp;
-	temp = all_cleared;
+	cout << all_cleared->chord << endl;	//print out the chord
+	all_cleared = all_cleared->next;	//move all_cleared
+	delete temp;					//delete the head
+	temp = all_cleared;				//move the head
 }
-delete temp;
-temp = NULL;
+delete temp;		//delete the head
+temp = NULL;		//re-define all to be NULL
 all_cleared = NULL;
 head = NULL;
 tail = NULL;
 }
 
+//This funciton outputs the chord to a text file
 void Guitar::write_to_file()
 {
 	tail = head;
