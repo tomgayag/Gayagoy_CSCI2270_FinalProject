@@ -19,6 +19,7 @@ Guitar::Guitar()
  start_creation = false;
 }
 
+
 void Guitar::build_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 if(start_creation == false)
@@ -64,6 +65,7 @@ if(tail->chord == "Gsharp")
 }
 }
 
+
 void Guitar::find_chord(std::string chord)
 {
 bool found = false;
@@ -73,13 +75,7 @@ while(tail!=NULL)
 	if(chord == tail->chord)
 	{
 		found = true;
-		cout << chord << " chord has been found! Congratulations! You won!!" << endl;
-		cout << tail->string_guitar1 << endl;
-		cout << tail->string_guitar2 << endl;
-		cout << tail->string_guitar3 << endl;
-		cout << tail->string_guitar4 << endl;
-		cout << tail->string_guitar5 << endl;
-		cout << tail->string_guitar6 << endl;
+		cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
 		break;
 	}
 	tail = tail->next;
@@ -89,7 +85,7 @@ while(tail!=NULL)
 		cout << chord << " does not exist! Please enter another chord to find!" << endl;
 	}
 
-	
+
 }
 
 void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
@@ -113,6 +109,7 @@ tail->next = n1;
 tail = tail->next;
 cout << chord << " has been succesfull added! Press 8 to display it!" << endl;
 }
+
 
 void Guitar::delete_chord(string chord)
 {
@@ -157,10 +154,8 @@ while(tail!=NULL)
 			cout << chord << " has been removed! Press 8 to display new list of chords!" << endl;
 		}
 	}
-	
-		
-			
 }
+
 
 void Guitar::transpose_chord_up(string chord, int number_move_up)
 {
@@ -180,20 +175,15 @@ while(tail!=NULL)
 				{
 						tail = tail->next;
 				}
-			
+
 			number_move_up--;
 			cout << tail->chord << endl;
 		}
-	
-	
+
+
 		found = true;
 		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
-		cout << tail->string_guitar1 << endl;
-		cout << tail->string_guitar2 << endl;
-		cout << tail->string_guitar3 << endl;
-		cout << tail->string_guitar4 << endl;
-		cout << tail->string_guitar5 << endl;
-		cout << tail->string_guitar6 << endl;
+        cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
 		break;
 	}
 	tail = tail->next;
@@ -204,6 +194,7 @@ while(tail!=NULL)
 	}
 
 }
+
 
 void Guitar:: transpose_chord_down(string chord, int number_move_down)
 {
@@ -223,20 +214,16 @@ while(tail!=NULL)
 				{
 						tail = tail->previous;
 				}
-			
+
 			number_move_down--;
 			cout << tail->chord << endl;
 		}
-	
-	
+
+
 		found = true;
 		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
-		cout << tail->string_guitar1 << endl;
-		cout << tail->string_guitar2 << endl;
-		cout << tail->string_guitar3 << endl;
-		cout << tail->string_guitar4 << endl;
-		cout << tail->string_guitar5 << endl;
-		cout << tail->string_guitar6 << endl;
+		cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
+
 		break;
 	}
 	tail = tail->next;
@@ -247,6 +234,7 @@ while(tail!=NULL)
 	}
 
 }
+
 
 void Guitar::change_chord(string chord, string new_chord_name, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
@@ -276,6 +264,7 @@ while(tail!=NULL)
 
 }
 
+
 void Guitar::display_chord()
 {
 	if(head == NULL)
@@ -294,8 +283,9 @@ void Guitar::display_chord()
 }
 }
 
+
 void Guitar::clear_all_chords()
-{	
+{
 node*temp = head;
 node*all_cleared = head;
 while(all_cleared!=NULL)
@@ -311,6 +301,7 @@ all_cleared = NULL;
 head = NULL;
 tail = NULL;
 }
+
 
 void Guitar::write_to_file()
 {
@@ -333,4 +324,60 @@ void Guitar::write_to_file()
 		tail=tail->next;
 	}
 	outFile.close();
+}
+
+void Guitar::help(string select){
+    if(select == "1"){
+        cout <<"- This option builds a list from the text file run with the program"<<endl;
+        return;
+    }
+    if(select == "2"){
+       cout << "- This option finds a chord and displays the chord structure" << endl;
+        return;
+    }
+    if(select == "3"){
+        cout << "- This option allows you to add a chord that you created to the end of the list" << endl;
+        return;
+    }
+    if(select == "4"){
+        cout << "- This option allows you to delete a chord you added" << endl;
+        return;
+    }
+    if(select == "5"){
+        cout << "- This option transposes a chord you select up by how many half-steps you select" << endl;
+        return;
+    }
+    if(select == "6"){
+        cout << "- This option transposes a chord you select down by how many half-steps you select" << endl;
+        return;
+    }
+    if(select == "7"){
+        cout << "- This option allows you to change a chord that you added" << endl;
+        return;
+    }
+    if(select == "8"){
+        cout << "- This option displays the current list of chords" << endl;
+        return;
+    }
+    if(select == "9"){
+        cout << "- This option clears the current list of chords" << endl;
+        return;
+    }
+    if(select == "10"){
+        cout << "- This option saves the current list of chords into a text file and exits the program" << endl;
+        return;
+    }
+    if(select == "12"){
+        cout << "- This option exits the program without saving any changes" << endl;
+        return;
+    }
+    if(select == "11"){
+        cout << "- This is just the help option" << endl;
+        return;
+    }
+    else{
+        cout << "Invalid Option" << endl;
+    }
+
+
 }
