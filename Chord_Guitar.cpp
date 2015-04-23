@@ -327,6 +327,7 @@ void Guitar::write_to_file()
 	outFile.close();
 }
 
+//Selecting this option tells the user what each different option does
 void Guitar::help(string select){
     if(select == "1"){
         cout <<"- This option builds a list from the text file run with the program"<<endl;
