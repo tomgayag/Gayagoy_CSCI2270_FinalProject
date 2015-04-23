@@ -380,6 +380,4 @@ void Guitar::help(string select){
     else{
         cout << "Invalid Option" << endl;
     }
-
-
 }
