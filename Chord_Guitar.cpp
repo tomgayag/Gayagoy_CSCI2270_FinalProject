@@ -265,7 +265,7 @@ while(tail!=NULL)	//loops through chord
 
 }
 
-//The display chord function outputs the chord
+//The display chord function outputs the chord to the user
 void Guitar::display_chord()
 {
 	if(head == NULL)
