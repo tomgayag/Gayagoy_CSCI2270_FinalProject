@@ -36,6 +36,7 @@ class Guitar
         void display_chord();
         void clear_all_chords();
         void write_to_file();
+        void help(std::string select);
     protected:
     private:
     node *head;
@@ -45,14 +46,3 @@ class Guitar
 
 #endif // GUITAR_H
 
-//List of Public Methods
-//1. create a chord list with a file
-//2. display a chord
-//3. add a chord
-//4. delete a chord
-//5. transpose up a selected chord
-//6. transpose down a selected chord
-//7. show a current list of chords
-//8. clear all chords
-//9. change a chord
-//10. save changes
