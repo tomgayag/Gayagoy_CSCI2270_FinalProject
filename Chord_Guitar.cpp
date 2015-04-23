@@ -19,7 +19,13 @@ Guitar::Guitar()
  start_creation = false;
 }
 
-//This is the build chord function, which takes in the name of the chord, and each of the strings, as strings
+/*Function Prototype: void Guitar::build_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
+ * Function Description: This is the build chord function, which takes in the name of the chord, and each of the strings, as strings
+ * Then it adds the node to the linked list
+ * 
+ * Pre-conditions: a linked list with n chords
+ * Post-conditions: a linked list with n+1 chords
+*/
 void Guitar::build_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 if(start_creation == false) //The boolean start_creation is initialized as false, so this statement will be true the first time that a chord is built
@@ -65,7 +71,12 @@ if(tail->chord == "Gsharp")
 }
 }
 
-//This is the find chord function, which takes in a string of the chord to be found
+/* Function Prototype: void Guitar::find_chord(std::string chord)
+ * Function description: This is the find chord function, which takes in a string of the chord to be found
+ * 
+ * Pre-conditions: a linked list with n chords
+ * Post-conditions: a linked list with n chords
+* */
 void Guitar::find_chord(std::string chord)
 {
 bool found = false;		//Initially, the boolean found is set to false
@@ -88,7 +99,12 @@ while(tail!=NULL)
 
 }
 
-//This is the add chord function, which takes in the name of the chord, and each of the strings, as strings
+/*Function Prototype: void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
+ * Function Description: This is the add chord function, which takes in the name of the chord, and each of the strings, as strings
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: a linked list with n+1 nodes
+*/
 void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 node *n = new node;
@@ -111,7 +127,12 @@ tail = tail->next;
 cout << chord << " has been succesfull added! Press 8 to display it!" << endl; //Notify the user that the chord has been added
 }
 
-//This is the delete chord function, which takes in a string of the chord to be deleted
+/*Function Prototype: void Guitar::delete_chord(string chord)
+ * Function description: This is the delete chord function, which takes in a string of the chord to be deleted
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: a linked list with n-1 nodes
+ * */
 void Guitar::delete_chord(string chord)
 {
 	bool found = false;
@@ -157,7 +178,12 @@ while(tail!=NULL)	//First we find the chord to be deleted
 	}
 }
 
-//This is the transpose up function, which takes in the chord as a string and the number to traspose up as an int
+/*Function Prototype: void Guitar::transpose_chord_up(string chord, int number_move_up)
+ * Function description: This is the transpose chord up function, which takes in a string of the chord to be transposed, and the number to move it up
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: a linked list with n with one of them transposed up
+ * */
 void Guitar::transpose_chord_up(string chord, int number_move_up)
 {
 	bool found = false;
@@ -196,8 +222,13 @@ while(tail!=NULL)	//loop through the chord
 
 }
 
-//This is the transpose down function, which takes in the chord as a string and the number to traspose up down an int
-void Guitar:: transpose_chord_down(string chord, int number_move_down)
+/*Function Prototype: void Guitar::transpose_chord(string chord, int number_move_down)
+ * Function description: This is the transpose chord up function, which takes in a string of the chord to be transposed, and the number to move it down
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: a linked list with n with one of them transposed down
+ * */
+ void Guitar:: transpose_chord_down(string chord, int number_move_down)
 {
 bool found = false;
 tail = head;
@@ -236,7 +267,13 @@ while(tail!=NULL)
 
 }
 
-//The change chord function allows the user to edit an already created chord
+/*Function Prototype: void Guitar::change_chord(string chord, string new_chord_name, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
+ * Function description: This is the change chord function, which takes in a string of the chord to be changed, and each of the strings and changes them
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: a new linked list with n nodes, some or all of which may be different
+ * */
+
 void Guitar::change_chord(string chord, string new_chord_name, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 	bool found = false;
@@ -258,14 +295,20 @@ while(tail!=NULL)	//loops through chord
 	}
 	tail = tail->next;
 }
-	if(found == false)	//Or, complains to the user if the chord is not found
+	if(found == false)	//Or, complains to the user if the chord looking for is not found
 	{
 		cout << chord << " does not exist! Please enter another chord to find!" << endl;
 	}
 
 }
 
-//The display chord function outputs the chord
+/*Function Prototype: void Guitar::dislpay_chord()
+ * Function description: This is the display chord function, which takes in no parameters
+ * 
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: the same linked list with n nodes, the chord is printed out
+ * */
+
 void Guitar::display_chord()
 {
 	if(head == NULL)
@@ -284,7 +327,12 @@ void Guitar::display_chord()
 }
 }
 
-//The clear all chords function removes all chords
+/*Function Prototype: void Guitar::clear_all_chords()
+ * Function description: This is the clear all chord function, which takes the chord and removes all the elements from the linked list
+ * Pre-conditions: a linked list with n nodes
+ * Post-conditions: an empty linked list
+ * */
+
 void Guitar::clear_all_chords()
 {
 node*temp = head;
@@ -303,7 +351,12 @@ head = NULL;
 tail = NULL;
 }
 
-//This funciton outputs the chord to a text file
+/*Function Prototype: void Guitar::write_to_file()
+ * Function Description: outputs a chord and its strings to a text file
+ * 
+ * Pre-conditions: a chord
+ * Post-conditions: the chord in a text file
+* */
 void Guitar::write_to_file()
 {
 	tail = head;
@@ -327,6 +380,12 @@ void Guitar::write_to_file()
 	outFile.close();
 }
 
+/*Function Prototype: void Guitar::help(string select)
+ * Function Description: this function displays a help menu, where the user can learn about the different functions
+ * 
+ * Pre-conditions: ---
+ * Post-conditions: ---
+* */
 void Guitar::help(string select){
     if(select == "1"){
         cout <<"- This option builds a list from the text file run with the program"<<endl;
