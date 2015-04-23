@@ -26,24 +26,27 @@ int main(int argc, char *argv[])
      string string_guitar4;
      string string_guitar5;
      string string_guitar6;
-    
+
 
 	int lets_play_guitar;
 	bool Quit = false;
+	cout << "               Welcome to our Chord Book!!!" << endl;
 	while (Quit!=true)
 	{
-	    cout << "======Main Menu=====" << endl;
-		cout << "1.Build Chord" << endl;
-		cout << "2.Find Chord" << endl;
-		cout << "3.Add Chord" << endl;
-		cout << "4.Delete Chord" << endl;
-		cout << "5.Tranpose Chord Up" << endl;
-		cout << "6.Transpose Chord Down" << endl;
-		cout << "7.Change Chord" << endl;
-		cout << "8.Display Chord" << endl;
-		cout << "9.Write To File" << endl;
-		cout << "10.Save Changes" << endl;
-		cout << "11.Quit" << endl;
+	    //cout << "======Main Menu=====" << endl;
+	    cout << "  Please Select an Option:" << endl;
+		cout << "1.) Build List of Chords " << endl;
+		cout << "2.) Find a Chord" << endl;
+		cout << "3.) Add a Chord" << endl;
+		cout << "4.) Delete a Chord" << endl;
+		cout << "5.) Transpose a Chord Up" << endl;
+		cout << "6.) Transpose a Chord Down" << endl;
+		cout << "7.) Change a Chord" << endl;
+		cout << "8.) Display Chord List" << endl;
+		cout << "9.) Clear all Chords" << endl;
+		cout << "10.) Save And Quit" << endl;
+		cout << "11.) Help" << endl;
+		cout << "12.) Exit the Program" << endl;
 		cin >> lets_play_guitar;;
 		cin.clear();
 		cin.ignore(10000, '\n');
@@ -52,28 +55,29 @@ int main(int argc, char *argv[])
 		{
         case 1:
         {
-			cout << "Let's create the guitar chords so we can begin the lesson!" << endl;
+			cout << "Creating a list..." << endl;
 			while (getline (myfile, list_of_chords))
     {
         stringstream ss(list_of_chords);
-       
+
         getline(ss, chord, ',');
         getline(ss, string_guitar1, ',');
         getline(ss, string_guitar2, ',');
         getline(ss, string_guitar3, ',');
         getline(ss, string_guitar4, ',');
         getline(ss, string_guitar5, ',');
-        getline(ss, string_guitar6, ','); 
-        cout << "------------" << endl;
-        cout << chord << endl;
-        cout << string_guitar1 << endl;
-        cout << string_guitar2 << endl;
-        cout << string_guitar3 << endl;
-        cout << string_guitar4 << endl;
-        cout << string_guitar5 << endl;
-        cout << string_guitar6 << endl;
+        getline(ss, string_guitar6, ',');
+        //cout << "------------" << endl;
+        //cout << chord << endl;
+        //cout << string_guitar1 << endl;
+        //cout << string_guitar2 << endl;
+        //cout << string_guitar3 << endl;
+        //cout << string_guitar4 << endl;
+        //cout << string_guitar5 << endl;
+        //cout << string_guitar6 << endl;
         the_guitar->build_chord(chord,string_guitar1, string_guitar2,string_guitar3,string_guitar4,string_guitar5, string_guitar6);
 		}
+		cout << "list complete!" <<endl;
 			break;
 		}
         case 2:
@@ -95,17 +99,17 @@ int main(int argc, char *argv[])
 			string new_string_guitar4;
 			string new_string_guitar5;
 			string new_string_guitar6;
-			cout << "Enter new string guitat1" << endl;
+			cout << "Enter new string guitar 1" << endl;
 			getline(cin,new_string_guitar1);
-			cout << "Enter new string guitat2" << endl;	
+			cout << "Enter new string guitar 2" << endl;
 			getline(cin,new_string_guitar2);
-			cout << "Enter new string guitat3" << endl;	
+			cout << "Enter new string guitar 3" << endl;
 			getline(cin,new_string_guitar3);
-			cout << "Enter new string guitat4" << endl;
+			cout << "Enter new string guitar 4" << endl;
 			getline(cin,new_string_guitar4);
-			cout << "Enter new string guitat5" << endl;
+			cout << "Enter new string guitar 5" << endl;
 			getline(cin,new_string_guitar5);
-			cout << "Enter new string guitat6" << endl;
+			cout << "Enter new string guitar 6" << endl;
 			getline(cin,new_string_guitar6);
 			the_guitar->add_chord(chord_to_add, new_string_guitar1, new_string_guitar2,new_string_guitar3,new_string_guitar4,new_string_guitar5, new_string_guitar6);
 			break;
@@ -150,21 +154,21 @@ int main(int argc, char *argv[])
 			string new_string_guitar4;
 			string new_string_guitar5;
 			string new_string_guitar6;
-			cout << "Enter current chord" << endl;	
+			cout << "Enter current chord" << endl;
 			getline(cin,current_chord);
 			cout << "Enter new chord name" << endl;
 			getline(cin, new_chord_name);
-			cout << "Enter new string guitat1" << endl;
+			cout << "Enter new string guitar 1" << endl;
 			getline(cin,new_string_guitar1);
-			cout << "Enter new string guitat2" << endl;	
+			cout << "Enter new string guitar 2" << endl;
 			getline(cin,new_string_guitar2);
-			cout << "Enter new string guitat3" << endl;	
+			cout << "Enter new string guitar 3" << endl;
 			getline(cin,new_string_guitar3);
-			cout << "Enter new string guitat4" << endl;
+			cout << "Enter new string guitar 4" << endl;
 			getline(cin,new_string_guitar4);
-			cout << "Enter new string guitat5" << endl;
+			cout << "Enter new string guitar 5" << endl;
 			getline(cin,new_string_guitar5);
-			cout << "Enter new string guitat6" << endl;
+			cout << "Enter new string guitar 6" << endl;
 			getline(cin,new_string_guitar6);
 			the_guitar -> change_chord(current_chord, new_chord_name, new_string_guitar1, new_string_guitar2, new_string_guitar3, new_string_guitar4, new_string_guitar5, new_string_guitar6);
 			break;
@@ -188,9 +192,17 @@ int main(int argc, char *argv[])
 			break;
 		}
 		case 11:
+        {
+            string input;
+            cout << "Which option do you need help with? (Enter number)" << endl;
+            getline(cin,input);
+            the_guitar->help(input);
+            break;
+        }
+		case 12:
 		{
 			Quit = true;
-			cout << "This is the end of the guitar lesson! Goodbye!" << endl;
+			cout << "Thank you for using our chord book!" << endl;
 			break;
 		}
 		}
