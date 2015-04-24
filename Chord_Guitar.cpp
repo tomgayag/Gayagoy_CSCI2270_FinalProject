@@ -209,7 +209,7 @@ while(tail!=NULL)	//loop through the chord
 
 		//Once chord has been transposed, it is diplayed to the user
 		found = true;
-		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
+		cout << tail->chord << " is a new chord to be displayed after " << chord << " has been transposed up" << endl;
         cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
 		break;
 	}
@@ -253,7 +253,7 @@ while(tail!=NULL)
 
 		//Once the chord has been transposed down, it is displayed to the user
 		found = true;
-		cout << tail->chord << " chord has been found! Congratulations! You won!!" << endl;
+		cout << tail->chord << " is a new chord to be displayed after " << chord << " has been transposed down" << endl;
 		cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
 
 		break;
