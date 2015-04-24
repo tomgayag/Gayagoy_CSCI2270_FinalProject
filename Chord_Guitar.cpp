@@ -1,7 +1,7 @@
 //Chord_Guitar.cpp
 //Anh-Khoa Than
-//Thomas
-//Yash
+//Thomas Gayagoy
+//Yash Parekh
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +22,7 @@ Guitar::Guitar()
 /*Function Prototype: void Guitar::build_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
  * Function Description: This is the build chord function, which takes in the name of the chord, and each of the strings, as strings
  * Then it adds the node to the linked list
- * 
+ *
  * Pre-conditions: a linked list with n chords
  * Post-conditions: a linked list with n+1 chords
 */
@@ -73,7 +73,7 @@ if(tail->chord == "Gsharp")
 
 /* Function Prototype: void Guitar::find_chord(std::string chord)
  * Function description: This is the find chord function, which takes in a string of the chord to be found
- * 
+ *
  * Pre-conditions: a linked list with n chords
  * Post-conditions: a linked list with n chords
 * */
@@ -101,7 +101,7 @@ while(tail!=NULL)
 
 /*Function Prototype: void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
  * Function Description: This is the add chord function, which takes in the name of the chord, and each of the strings, as strings
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: a linked list with n+1 nodes
 */
@@ -129,7 +129,7 @@ cout << chord << " has been succesfull added! Press 8 to display it!" << endl; /
 
 /*Function Prototype: void Guitar::delete_chord(string chord)
  * Function description: This is the delete chord function, which takes in a string of the chord to be deleted
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: a linked list with n-1 nodes
  * */
@@ -180,7 +180,7 @@ while(tail!=NULL)	//First we find the chord to be deleted
 
 /*Function Prototype: void Guitar::transpose_chord_up(string chord, int number_move_up)
  * Function description: This is the transpose chord up function, which takes in a string of the chord to be transposed, and the number to move it up
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: a linked list with n with one of them transposed up
  * */
@@ -224,7 +224,7 @@ while(tail!=NULL)	//loop through the chord
 
 /*Function Prototype: void Guitar::transpose_chord(string chord, int number_move_down)
  * Function description: This is the transpose chord up function, which takes in a string of the chord to be transposed, and the number to move it down
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: a linked list with n with one of them transposed down
  * */
@@ -269,7 +269,7 @@ while(tail!=NULL)
 
 /*Function Prototype: void Guitar::change_chord(string chord, string new_chord_name, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
  * Function description: This is the change chord function, which takes in a string of the chord to be changed, and each of the strings and changes them
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: a new linked list with n nodes, some or all of which may be different
  * */
@@ -304,7 +304,7 @@ while(tail!=NULL)	//loops through chord
 
 /*Function Prototype: void Guitar::dislpay_chord()
  * Function description: This is the display chord function, which takes in no parameters
- * 
+ *
  * Pre-conditions: a linked list with n nodes
  * Post-conditions: the same linked list with n nodes, the chord is printed out
  * */
@@ -353,14 +353,14 @@ tail = NULL;
 
 /*Function Prototype: void Guitar::write_to_file()
  * Function Description: outputs a chord and its strings to a text file
- * 
+ *
  * Pre-conditions: a chord
  * Post-conditions: the chord in a text file
 * */
 void Guitar::write_to_file()
 {
 	tail = head;
-	ofstream outFile("test.txt");
+	ofstream outFile("NewSavedChord.txt");
 	while(tail!=NULL){
 		outFile<< tail->chord;
 		outFile<< ",";
@@ -382,7 +382,7 @@ void Guitar::write_to_file()
 
 /*Function Prototype: void Guitar::help(string select)
  * Function Description: this function displays a help menu, where the user can learn about the different functions
- * 
+ *
  * Pre-conditions: ---
  * Post-conditions: ---
 * */
