@@ -30,6 +30,7 @@ void Guitar::build_chord(string chord, string string_guitar1, string string_guit
 {
 if(start_creation == false) //The boolean start_creation is initialized as false, so this statement will be true the first time that a chord is built
 {
+    cout << "1" << endl;
 node *n = new node;		//We create a new node for the first chord, and since it is the first chord, it is set to be the head and the tail
 head = n;
 tail = n;
@@ -47,6 +48,7 @@ start_creation = true;	//The boolean start_creation is set to true since if ther
 }
 else if (start_creation == true)
 {
+    cout << "2" << endl;
 node *n1 = new node;
 n1->chord = chord;	//Again, this string is the name of the new chord
 n1->string_guitar1 = string_guitar1;	//string_guitar1-string_guitar6 for the new chord n1
@@ -62,6 +64,7 @@ tail->next = n1;	//The old tail's next pointer is set to be the new chord
 tail = tail->next;	//The tail is moved to the last node
 if(tail->chord == "Gsharp")
 {
+    start_creation = false;
 	tail->loop = head;
 	head->loop = tail;
 }else
