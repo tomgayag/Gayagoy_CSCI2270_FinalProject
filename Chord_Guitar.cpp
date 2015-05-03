@@ -111,17 +111,9 @@ while(tail!=NULL)
 void Guitar::add_chord(string chord, string string_guitar1, string string_guitar2, string string_guitar3, string string_guitar4, string string_guitar5, string string_guitar6)
 {
 node *n = new node;
-tail=head;
-while(tail!=NULL){
-    if(tail->chord==chord){
-        cout<< "Name already taken, please select a different name" << endl;
-        return;
-    }
+while(tail->next!=NULL){
+    
     tail = tail->next;
-}
-while(tail->next!=NULL)	//We loop through the linked list to find the tail, and set a new pointer, tail->next
-{
-	tail = tail->next;
 }
 node *n1 = new node;	//n1 is the new chord to be created
 n1->chord = chord;		//n1->chord is a string which is the name of the chord
