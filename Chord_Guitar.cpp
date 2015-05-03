@@ -74,6 +74,48 @@ if(tail->chord == "Gsharp")
 }
 }
 
+bool Guitar::lowerValid(std::string chord, std::string chord2)
+{
+    bool valid = false;
+
+    
+    if (chord[1] == 0 && chord[0] - 32 == chord2[0]) //ascii conversion from lowercase to uppercase
+        //also checks if the next character is just a newline (there's no sharp symbol))
+    {
+        
+        valid = true;
+    }
+    else
+    {
+        valid = false;
+    }
+    
+    return valid;
+    
+}
+
+bool Guitar::lowerSharpValid(std::string chord, std::string chord2)
+{
+    bool valid = false;
+    
+    if (chord[0] + chord[1] == chord2[0] + chord2[1] - 48 && chord[0] - 32 == chord2[0])
+        //assumes sharp symbol and checks if lowercase letter + symbol differ from uppercase letter + letter "s" by 48 (Bsharp here would compare its first two letters "Bs" to what the user entered, "b#")
+        //also does ascii conversion from lowercase to uppercase for first letters just in case
+    {
+        
+        valid = true;
+    }
+    
+    
+    else
+    {
+        valid = false;
+    }
+    
+    return valid;
+    
+}
+
 /* Function Prototype: void Guitar::find_chord(std::string chord)
  * Function description: This is the find chord function, which takes in a string of the chord to be found
  *
@@ -86,9 +128,10 @@ bool found = false;		//Initially, the boolean found is set to false
 tail = head;
 while(tail!=NULL)
 {
-	if(chord == tail->chord)	//tail is set to head, and tail goes through the linked list until the chord is found and when found, the user is notified and given the name of the chord and the positions for each string
+	if(chord == tail->chord || lowerValid(chord, tail->chord) || lowerSharpValid(chord, tail->chord))	//tail is set to head, and tail goes through the linked list until the chord is found and when found, the user is notified and given the name of the chord and the positions for each string
 	{
 		found = true;
+        
 		cout << "| "<< tail->string_guitar6 << " - " << tail->string_guitar5 << " - " << tail->string_guitar4 << " - " << tail->string_guitar3 << " - " << tail->string_guitar2 << " - " << tail->string_guitar1 << " |" << endl;
 		break;
 	}
@@ -127,7 +170,7 @@ n1->next = NULL;		//Add to the end of the linked list
 n1->previous = tail;
 tail->next = n1;
 tail = tail->next;
-cout << chord << " has been succesfull added! Press 8 to display it!" << endl; //Notify the user that the chord has been added
+cout << chord << " has been succesfully added! Press 8 to display it!" << endl; //Notify the user that the chord has been added
 }
 
 /*Function Prototype: void Guitar::delete_chord(string chord)

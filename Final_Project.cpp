@@ -82,6 +82,7 @@ int main(int argc, char *argv[])
 		}
         case 2:
         {
+            
 			string chord_to_find;
 			cout << "Enter chord to find" << endl;
 			getline(cin, chord_to_find);
