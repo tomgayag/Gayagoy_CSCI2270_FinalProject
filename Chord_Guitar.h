@@ -37,6 +37,8 @@ class Guitar
         void clear_all_chords();
         void write_to_file();
         void help(std::string select);
+        bool lowerValid(std::string chord, std::string chord2);
+        bool lowerSharpValid(std::string chord, std::string chord2);
     protected:
     private:
     node *head;
