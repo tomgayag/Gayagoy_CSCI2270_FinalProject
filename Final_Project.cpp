@@ -17,6 +17,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	Guitar *the_guitar = new Guitar();
+	 ifstream myfile(argv[1]);
 	 string list_of_chords;
 	 string chord ;
      string string_guitar1;
@@ -55,7 +56,6 @@ int main(int argc, char *argv[])
         case 1:
         {
 			cout << "Creating a list..." << endl;
-            ifstream myfile(argv[1]);
 			while (getline (myfile, list_of_chords))
     {
         stringstream ss(list_of_chords);
@@ -210,6 +210,3 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-
-
-
