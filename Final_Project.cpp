@@ -14,6 +14,8 @@
 #include "Chord_Guitar.h"
 using namespace std;
 
+void displayMenu();
+
 int main(int argc, char *argv[])
 {
 	Guitar *the_guitar = new Guitar();
@@ -33,20 +35,7 @@ int main(int argc, char *argv[])
 	cout << "               Welcome to our Chord Book!!!" << endl;
 	while (Quit!=true)
 	{
-	    //cout << "======Main Menu=====" << endl;
-	    cout << "  Please Select an Option:" << endl;
-		cout << "1.) Build List of Chords " << endl;
-		cout << "2.) Find a Chord" << endl;
-		cout << "3.) Add a Chord" << endl;
-		cout << "4.) Delete a Chord" << endl;
-		cout << "5.) Transpose a Chord Up" << endl;
-		cout << "6.) Transpose a Chord Down" << endl;
-		cout << "7.) Change a Chord" << endl;
-		cout << "8.) Display Chord List" << endl;
-		cout << "9.) Clear all Chords" << endl;
-		cout << "10.) Save And Quit" << endl;
-		cout << "11.) Help" << endl;
-		cout << "12.) Exit the Program" << endl;
+        displayMenu();
 		cin >> lets_play_guitar;;
 		cin.clear();
 		cin.ignore(10000, '\n');
@@ -67,14 +56,6 @@ int main(int argc, char *argv[])
         getline(ss, string_guitar4, ',');
         getline(ss, string_guitar5, ',');
         getline(ss, string_guitar6, ',');
-        //cout << "------------" << endl;
-        //cout << chord << endl;
-        //cout << string_guitar1 << endl;
-        //cout << string_guitar2 << endl;
-        //cout << string_guitar3 << endl;
-        //cout << string_guitar4 << endl;
-        //cout << string_guitar5 << endl;
-        //cout << string_guitar6 << endl;
         the_guitar->build_chord(chord,string_guitar1, string_guitar2,string_guitar3,string_guitar4,string_guitar5, string_guitar6);
 		}
 		cout << "list complete!" <<endl;
@@ -82,7 +63,7 @@ int main(int argc, char *argv[])
 		}
         case 2:
         {
-            
+
 			string chord_to_find;
 			cout << "Enter chord to find" << endl;
 			getline(cin, chord_to_find);
@@ -100,18 +81,14 @@ int main(int argc, char *argv[])
 			string new_string_guitar4;
 			string new_string_guitar5;
 			string new_string_guitar6;
-			cout << "Enter new string guitar 1" << endl;
+			cout << "Enter 6 new strings for the guitar" << endl;
 			getline(cin,new_string_guitar1);
-			cout << "Enter new string guitar 2" << endl;
-			getline(cin,new_string_guitar2);
-			cout << "Enter new string guitar 3" << endl;
-			getline(cin,new_string_guitar3);
-			cout << "Enter new string guitar 4" << endl;
-			getline(cin,new_string_guitar4);
-			cout << "Enter new string guitar 5" << endl;
-			getline(cin,new_string_guitar5);
-			cout << "Enter new string guitar 6" << endl;
-			getline(cin,new_string_guitar6);
+            		getline(cin,new_string_guitar2);
+            		getline(cin,new_string_guitar3);
+            		getline(cin,new_string_guitar4);
+            		getline(cin,new_string_guitar5);
+            		getline(cin,new_string_guitar6);
+
 			the_guitar->add_chord(chord_to_add, new_string_guitar1, new_string_guitar2,new_string_guitar3,new_string_guitar4,new_string_guitar5, new_string_guitar6);
 			break;
 		}
@@ -159,17 +136,13 @@ int main(int argc, char *argv[])
 			getline(cin,current_chord);
 			cout << "Enter new chord name" << endl;
 			getline(cin, new_chord_name);
-			cout << "Enter new string guitar 1" << endl;
+			cout << "Enter 6 new string for the guitar" << endl;
 			getline(cin,new_string_guitar1);
-			cout << "Enter new string guitar 2" << endl;
 			getline(cin,new_string_guitar2);
-			cout << "Enter new string guitar 3" << endl;
 			getline(cin,new_string_guitar3);
-			cout << "Enter new string guitar 4" << endl;
 			getline(cin,new_string_guitar4);
-			cout << "Enter new string guitar 5" << endl;
 			getline(cin,new_string_guitar5);
-			cout << "Enter new string guitar 6" << endl;
+
 			getline(cin,new_string_guitar6);
 			the_guitar -> change_chord(current_chord, new_chord_name, new_string_guitar1, new_string_guitar2, new_string_guitar3, new_string_guitar4, new_string_guitar5, new_string_guitar6);
 			break;
@@ -210,4 +183,21 @@ int main(int argc, char *argv[])
 	}
 
     return 0;
+}
+
+void displayMenu()
+{
+	    cout << "  Please Select an Option:" << endl;
+		cout << "1.) Build List of Chords " << endl;
+		cout << "2.) Find a Chord" << endl;
+		cout << "3.) Add a Chord" << endl;
+		cout << "4.) Delete a Chord" << endl;
+		cout << "5.) Transpose a Chord Up" << endl;
+		cout << "6.) Transpose a Chord Down" << endl;
+		cout << "7.) Change a Chord" << endl;
+		cout << "8.) Display Chord List" << endl;
+		cout << "9.) Clear all Chords" << endl;
+		cout << "10.) Save And Quit" << endl;
+		cout << "11.) Help" << endl;
+		cout << "12.) Exit the Program" << endl;
 }
